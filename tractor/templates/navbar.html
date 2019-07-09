@@ -1,0 +1,72 @@
+<!--Navbar -->
+<nav class="mb-1 navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="{% url 'index' %}">
+        <img src="/static/images/Nav-icon.png" height="45" alt="mdb logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
+        aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'index' %}">Home
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">Filter By Locations</a>
+                <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
+                    {% for location in locations %}
+
+                    <a class="dropdown-item" href="/location/{{location.id}}">{{location.location}}</a>
+                    {% endfor%}
+                </div>
+            </li>
+
+
+        </ul>
+        <ul class="navbar-nav ml-auto nav-flex-icons">
+            <li class="nav-item" style="margin-right:300px;">
+                <form class="form-inline my-2 my-lg-0 ml-auto" action="{% url 'search_results' %}">
+                    <input class="form-control" type="search " name="category" placeholder="Search By Category"
+                        aria-label="Search">
+                    <button class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" type="submit">Search</button>
+                </form>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item" style="margin-top:0px;">
+                <a class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" href="{% url 'new-tractor' %}">List your Tractor</a>
+            </li>
+            {% else %}
+            <li class="nav-item" style="margin-right:20px;">
+                <a class="nav-link btn btn-outline-white btn-sm my-2 my-sm-0 ml-3" href="/accounts/register/">Sign
+                    Up</a>
+            </li>
+            {% endif %}
+
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-default"
+                    aria-labelledby="navbarDropdownMenuLink-333">
+                    {% if user.is_authenticated %}
+                    <a class="dropdown-item" style="color:red"><strong>{{user}}</strong></a>
+                    <a class="dropdown-item" href="/accounts/password/change">Change Password</a>
+                    <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                    <a class="dropdown-item" href="/logout">Logout</a>
+                    {% else %}
+                    <a class="dropdown-item" href="/accounts/login">Login</a>
+                    {% endif %}
+
+
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!--/.Navbar -->

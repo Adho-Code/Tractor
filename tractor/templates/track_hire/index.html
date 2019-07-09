@@ -1,0 +1,104 @@
+{% extends 'tract_hire/base.html'%}
+{% block content %}
+<div class="container-fluid">
+    <section class="">
+        <!--Carousel Wrapper-->
+        <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+            <!--Indicators-->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+                <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+            </ol>
+            <!--/.Indicators-->
+            <!--Slides-->
+            <div class="carousel-inner" role="listbox">
+                <!--First slide-->
+                <div style='height:500px' class="carousel-item active oneone">
+                    <img class="d-block w-100 img-fluid"  src="/static/images/John-Deere Tractors.jpg"
+                        alt="First slide">
+                </div>
+                <!--/First slide-->
+                <!--Second slide-->
+                <div style='height:500px' class="carousel-item oneone">
+                    <img class="d-block w-100 img-fluid" src="/static/images/Seeder.jpg"
+                        alt="Second slide">
+                </div>
+                <!--/Second slide-->
+                <!--Third slide-->
+                <div style='height:500px' class="carousel-item oneone">
+                    <img class="d-block w-100 img-fluid" src="/static/images/combine-harvester-1907864.jpg"
+                        alt="Third slide">
+                </div>
+                <!--/Third slide-->
+            </div>
+            <!--/.Slides-->
+            <!--Controls-->
+            <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+            <!--/.Controls-->
+        </div>
+        <!--/.Carousel Wrapper-->
+    </section>
+</div>
+<div class="container-fluid">
+    <div>
+        <h4 class="text-center heading">Hire a Tractor Today</h4>
+        <p class="text-center date">{{current_date|date}} </p>
+    </div>
+    <div class="row">
+        {% for tractor in tractors %}
+
+        <div class="col-md-4 main-page d-flex" style=" margin-top: 5px;">
+            <div class="card card-cascade wider flex-fill ">
+
+                <!-- Card image -->
+                <div class="view view-cascade overlay">
+                    <a data-toggle="modal" data-target="#{{tractor.id}}"><img class="card-img-top"
+                            src="{{tractor.tractor_image.url}}" alt="{{tractor.name}}"></a>
+                </div>
+                <!--Card content-->
+                <div class="card-body">
+
+                    <!--Title-->
+                    <h4 class="card-title heading">{{tractor.name}}</h4>
+                    <!--Text-->
+                    <p class="card-text"><strong>Category:</strong> {{tractor.category}}</p>
+                    <p class="card-text"><strong>Location:</strong> {{tractor.location_id}}</p>
+                    <a href="{% url 'tractor_details' tractor.pk %}" class="btn btn-danger float-right">View More</a>
+
+                </div>
+            </div>
+        </div>
+        <!--Modal: modalYT-->
+        <div class="modal fade" id="{{tractor.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <img class="embed-responsive-item" src="{{tractor.tractor_image.url}}" alt="Image Loading"
+                        style="margin:10px;" allowfullscreen>
+                </div>
+
+            </div>
+        </div>
+        <!--Modal: modalYT-->
+
+
+        {% empty %}
+        <div class="row">
+            <h1 style="margin-left:20px;"> No Images Yet</h1>
+        </div>
+        {% endfor %}
+    </div>
+    <!-- Card deck -->
+    <div class="row">
+    </div>
+
+</div>
+{% endblock %}

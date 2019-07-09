@@ -1,0 +1,36 @@
+{% extends 'tract_hire/base.html' %}
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    {% for located_tractor in located_tractors %}
+
+    <div class="col-md-4 main-page d-flex" style=" margin-top: 10px;">
+      <div class="card card-cascade wider flex-fill ">
+
+        <!-- Card image -->
+        <div class="view view-cascade overlay">
+          <img class="card-img-top" src="{{located_tractor.tractor_image.url}}" alt="{{searched_tractor.name}}">
+
+        </div>
+        <!--Card content-->
+        <div class="card-body">
+
+          <!--Title-->
+          <h4 class="card-title">{{located_tractor.name}}</h4>
+          <!--Text-->
+          <p class="card-text">{{located_tractor.location}}</p>
+          <p class="card-text">{{located_tractor.contact}}</p>
+          <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+          <a href="{% url 'tractor_details' located_tractor.pk %}" class="btn btn-danger float-right">View More</a>
+
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <div class="row">
+      <h1 style="margin-left:20px;"> No Images Yet</h1>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{%extends "registration/base.html"%} {% load bootstrap4 %}
+{% block content %}
+<div class="container-fluid authen">
+    <div class="row">
+        <!-- Empty div -->
+        <div class="col-md-4">
+            <img src="/static/images/tractor-icons-.jpg" alt="No Image"
+                style="height:400px;width:400px;margin-top:25px;">
+        </div>
+        <div class="col-md-4" style="margin-top:20px;">
+            {% if form.errors %}
+            <p> Some Information Might be Incorrect </p>
+            {% endif %}
+            <div class="card card-default reg">
+
+                <div class="card-heading">
+                    <h3 class="text-center heading">Sign Up</h3>
+                </div>
+                <div class="card-body">
+
+                    <form action="/accounts/register/" method="post">
+                        {% csrf_token %}
+                        {% bootstrap_form form layout='inline'%}
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary btn-block" value="Sign Up">
+                        </div>
+
+                        <input type="hidden" name="next" value="{{next}}">
+
+                    </form>
+
+                </div>
+
+            </div>
+            <div class="card-body">
+                Have an account? <a href="/accounts/login/">Log in</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <img src="/static/images/Left-tract.jpg" alt="No Image"
+                style="height:400px;width:400px;margin-top:25px;">
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}

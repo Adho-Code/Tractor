@@ -1,0 +1,43 @@
+{% extends 'tract_hire/base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+<div class="container-fluid">
+    <!-- Card -->
+    <div class="card card-cascade wider reverse">
+
+        <!-- Card image -->
+        <div style='height:500px' class="embed-responsive embed-responsive-16by9 oneone">
+            <img class="card-img-top embed-responsive-item" src="{{single_tractor.tractor_image.url}}"
+                alt="Card image cap">
+        </div>
+
+        <!-- Card content -->
+        <div class="card-body card-body-cascade">
+
+            <!-- Title -->
+            <h4 class="card-title text-center heading"><strong>{{single_tractor.name}}</strong></h4>
+            <!-- Subtitle -->
+            <h6 class="font-weight-bold indigo-text py-2 date"> <strong>Category: </strong>{{single_tractor.category}}</h6>
+            <!-- Text -->
+            <p class="card-text"><strong>Description:</strong> {{single_tractor.description}} </p>
+            <p class="card-text"><strong>Location:</strong>{{single_tractor.location_id}} </p>
+            <p class="card-text"><strong>Tel:{{single_tractor.contact}}</strong> </p>
+            <p class="card-text"><strong>Ksh:{{single_tractor.price_estimate}} per Acre</strong></p>
+
+        </div>
+        <div class="container-fluid">
+            
+            <div class="col-md-5" style="margin-left:400px;">
+                <form action="{% url 'tractor_details' single_tractor.pk %}" method="post">
+                    {%csrf_token%}
+
+                    {% bootstrap_form bookingForm layout='inline' %}
+                    <input type="submit" value="Book Tractor" class="btn btn-success" style="margin-left:130px;">
+                </form>
+            </div>
+           
+        </div>
+    </div>
+    <!-- Card -->
+</div>
+{% endblock %}

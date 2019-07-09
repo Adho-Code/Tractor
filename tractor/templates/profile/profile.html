@@ -1,0 +1,65 @@
+{% extends 'tract_hire/base.html' %}
+{% block content %}
+<div class="container" style="margin-top:30px;">
+    <div class="row profile">
+        <div class="col-md-2">
+            {% if profile.profile_picture %}
+            <img src="{{profile.profile_picture.url}}" alt="{{user}}" class="img-responsive"
+                style="height:300px;width:300px;">
+            {% else %}
+            <img src="/media/prof_pics/Avatar.png" alt="No Profile Pic">
+            {% endif %}
+        </div>
+
+        <div class="col-md-3" style="margin-left:200px;margin-top:30px;">
+            <a href="{% url 'edit_profile' %}" class="btn btn-light">Edit Profile</a>
+            <h3>{{user}}</h3>
+        </div>
+
+        <div class="col-md-3">
+        </div>
+
+    </div>
+
+    <div class="row" style="margin-top:30px;">
+        {% if tractors %}
+        <!-- Card deck -->
+        <div class="card-deck">
+            {% for tractor in tractors %}
+            <div class="card mb-4">
+
+                <!--Card image-->
+                <div class="view overlay">
+                    <img class="card-img-top" src="{{tractor.tractor_image.url}}" alt="Card image cap">
+                    <a href="#!">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+
+                <!--Card content-->
+                <div class="card-body">
+
+                    <!--Title-->
+                    <h4 class="card-title">{{tractor.name}}</h4>
+                    <!--Text-->
+                    <p class="card-title">{{tractor.category}}</p>
+                    <p class="card-text">{{tractor.description}}</p>
+                    <p class="card-text">{{tractor.price_estimate}}</p>
+                    <p class="card-text">{{tractor.location_id}}</p>
+                    <p class="card-text">{{tractor.contact}}</p>
+                    <p>Posted by: {{tractor.user}}</p>
+
+                </div>
+
+            </div>
+            <!-- Card -->
+            {% endfor %}
+        </div>
+        <!-- Card deck -->
+        {% else %}
+        <h4 style="margin-left:450px;color: red" class="heading">No Tractors Posted Yet</h4>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
