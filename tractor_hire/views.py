@@ -11,7 +11,7 @@ def index(request):
     tractors = Tractor.fetch_all_tractors()
     location = Location.get_location()
     current_date = datetime.datetime.now()
-    return render(request,'tract_hire/index.html',{"tractors":tractors,"locations":location,"current_date":current_date})
+    return render(request,'tractor_hire/index.html',{"tractors":tractors,"locations":location,"current_date":current_date})
 
 def search_category(request):
     if 'category' in request.GET and request.GET ["category"]:
