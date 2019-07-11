@@ -6,6 +6,7 @@ from django.http import HttpResponse,Http404,HttpResponseRedirect
 from .email import send_welcome_email
 from django.core.exceptions import ObjectDoesNotExist
 import datetime
+
 # Create your views here.
 def index(request):
     tractors = Tractor.fetch_all_tractors()
