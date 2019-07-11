@@ -41,7 +41,7 @@ def tractor_details(request,tractor_id):
     else:
         form = BookingForm()
     single_tractor = Tractor.get_single_tractor(tractor_id)
-    return render(request,'tract_hire/tractor_details.html',{"single_tractor":single_tractor,"bookingForm":form})
+    return render(request,'track_hire/tractor_details.html',{"single_tractor":single_tractor,"bookingForm":form})
 
 def filter_by_location(request,tractor_id):
     try:
