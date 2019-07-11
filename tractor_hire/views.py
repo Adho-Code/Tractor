@@ -12,7 +12,7 @@ def index(request):
     tractors = Tractor.fetch_all_tractors()
     location = Location.get_location()
     current_date = datetime.datetime.now()
-    return render(request,'tractor_hire/index.html',{"tractors":tractors,"locations":location,"current_date":current_date})
+    return render(request,'track_hire/index.html',{"tractors":tractors,"locations":location,"current_date":current_date})
 
 def search_category(request):
     if 'category' in request.GET and request.GET ["category"]:
@@ -49,7 +49,7 @@ def filter_by_location(request,tractor_id):
         located_tractors = Tractor.objects.filter(location_id=tractor_id)
     except DoesNotExist:
         raise Http404()
-    return render(request,'tractor_location/filter_location.html',{"located_tractors":located_tractors,"locations":location})
+    return render(request,'track_location/filter_location.html',{"located_tractors":located_tractors,"locations":location})
 
 @login_required(login_url='/accounts/login/')
 def new_tractor(request):
@@ -63,7 +63,7 @@ def new_tractor(request):
         return redirect('index')
     else:
         form = TractorForm()
-    return render(request,"upload_tractor/new_tractor.html",{"form":form})
+    return render(request,"upload_track/new_tractor.html",{"form":form})
 
 @login_required(login_url='/accounts/login/')
 def new_profile(request):

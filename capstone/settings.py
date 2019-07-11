@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'capstone.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'capstone',
+        'NAME': 'tractor',
         'USER': 'adho',
         'PASSWORD':'chukula13'
     }
