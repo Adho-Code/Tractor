@@ -35,11 +35,11 @@ class Category(models.Model):
 class Tractor(models.Model):
     name = models.CharField(max_length=255)
     tractor_image = models.ImageField(upload_to='tractor_pics',blank=True)
-    category = models.ForeignKey(Category,blank=True)
+    category = models.CharField(max_length=255)
     description = models.TextField(blank=True)
     user = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
     price_estimate = models.FloatField()
-    location_id = models.ForeignKey(Location,blank=True)
+    location_id = models.CharField(max_length=255)
     contact = models.CharField(max_length=255)
 
     def __str__(self):
