@@ -28,6 +28,7 @@ def search_category(request):
 
 @login_required(login_url='/accounts/login/')
 def tractor_details(request,tractor_id):
+    single_tractor = Tractor.get_single_tractor(tractor_id)
     if request.method == 'POST':
             form = BookingForm(request.POST)
             if form.is_valid():
@@ -36,11 +37,9 @@ def tractor_details(request,tractor_id):
                 recipient = Event(start_date=start_date,user_email=user_email)
                 recipient.save()
                 send_welcome_email(start_date,user_email)
-                HttpResponseRedirect('index')
-                print('Valid')
+                return HttpResponseRedirect('index.html')
     else:
         form = BookingForm()
-    single_tractor = Tractor.get_single_tractor(tractor_id)
     return render(request,'track_hire/tractor_details.html',{"single_tractor":single_tractor,"bookingForm":form})
 
 def filter_by_location(request,tractor_id):

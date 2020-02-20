@@ -1,53 +1,6 @@
 {% extends 'track_hire/base.html'%}
 {% block content %}
 <div class="container-fluid">
-    <section class="">
-        <!--Carousel Wrapper-->
-        <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
-            <!--Indicators-->
-            <ol class="carousel-indicators">
-                <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-1z" data-slide-to="1"></li>
-                <li data-target="#carousel-example-1z" data-slide-to="2"></li>
-            </ol>
-            <!--/.Indicators-->
-            <!--Slides-->
-            <div class="carousel-inner" role="listbox">
-                <!--First slide-->
-                <div style='height:500px' class="carousel-item active oneone">
-                    <img class="d-block w-100 img-fluid"  src="/static/images/John Deere.jpg"
-                        alt="First slide">
-                </div>
-                <!--/First slide-->
-                <!--Second slide-->
-                <div style='height:500px' class="carousel-item oneone">
-                    <img class="d-block w-100 img-fluid" src="/static/images/seeder.jpeg"
-                        alt="Second slide">
-                </div>
-                <!--/Second slide-->
-                <!--Third slide-->
-                <div style='height:500px' class="carousel-item oneone">
-                    <img class="d-block w-100 img-fluid" src="/static/images/combine harvest.jpeg"
-                        alt="Third slide">
-                </div>
-                <!--/Third slide-->
-            </div>
-            <!--/.Slides-->
-            <!--Controls-->
-            <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-            <!--/.Controls-->
-        </div>
-        <!--/.Carousel Wrapper-->
-    </section>
-</div>
-<div class="container-fluid">
     <div>
         <h4 class="text-center heading">Hire a Tractor Today</h4>
         <p class="text-center date">{{current_date|date}} </p>
